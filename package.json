@@ -1,0 +1,20 @@
+{
+  "name": "Groupware",
+  "version": "1.0.0",
+  "description": "Assistive technology \"Meta Micro Groupware\"",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Assistive Technology",
+    "Groupware",
+    "Meta-Design"
+  ],
+  "author": "Bruno Azevedo Chagas",
+  "license": "MIT",
+  "dependencies": {
+    "ejs": "^2.3.1",
+    "express": "^4.12.3"
+  }
+}
