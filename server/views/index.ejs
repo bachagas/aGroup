@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <base href="/app">
+    <title>Meta Groupware | <%= __('Welcome') %>!</title>
+
+    <% include ../includes/style %>
+
+</head>
+
+<body ng-app="MetaGroupware">
+
+    <h1><%= __('Hello world') %>!</h1>
+
+    <ng-view> </ng-view>
+
+    <% include ../includes/scripts %>
+
+</body>
+</html>
