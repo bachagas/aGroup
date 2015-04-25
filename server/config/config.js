@@ -29,7 +29,7 @@ module.exports = {
         env: process.env.NODE_ENV,
 
         // Root path of server
-        rootPath: path.normalize(__dirname),
+        rootPath: rootPath,
 
         // Server port
         port: process.env.PORT || 80,
