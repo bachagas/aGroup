@@ -1,0 +1,23 @@
+<div class="modal-header">
+    <h3 class="modal-title">Sign in</h3>
+</div>
+<div class="modal-body">
+    <div class="form">
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="Email" ng-model="username">
+        </div>
+        <div class="form-group">
+            <input type="password" class="form-control" placeholder="Password" ng-model="password">
+        </div>
+        <div class="checkbox">
+            <label>
+                <input type="checkbox"> Keep me logged in
+            </label>
+        </div>
+        <button class="btn btn-primary btn-block" ng-click="logIn(username, password);">Sign me in</button>
+    </div>
+    <p class="text-center"><small>Doesn't have one? Sign up <a href="signUp" ng-click="cancel();">here</a>.</small></p>
+<div class="modal-footer">
+    <!--<button class="btn btn-primary" ng-click="ok()">OK</button>-->
+    <button class="btn btn-warning" ng-click="cancel();">Cancel</button>
+</div>

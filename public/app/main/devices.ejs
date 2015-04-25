@@ -1,0 +1,11 @@
+<div class="panel panel-default">
+    <div class="panel-heading text-center">
+        Your devices
+    </div>
+    <div class="panel-body">
+        <div class="row" ng-repeat="device in devices | orderBy: 'status' : true">
+            <div class="col-md-9">{{device.name}}</div>
+            <div class="col-md-3"><span class="glyphicon glyphicon-flag status-light" ng-class="device.status"> </span> {{device.status}} </div>
+        </div>
+    </div>
+</div>

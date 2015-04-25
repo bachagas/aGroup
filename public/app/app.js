@@ -1,4 +1,4 @@
-angular.module('MetaGroupware', ['ngResource', 'ngRoute', 'pascalprecht.translate']);
+angular.module('MetaGroupware', ['ngResource', 'ngRoute', 'pascalprecht.translate', 'ui.bootstrap']);
 
 angular.module('MetaGroupware').config(function ($routeProvider, $locationProvider, $translateProvider) {
     $locationProvider.html5Mode(true);
@@ -14,47 +14,17 @@ angular.module('MetaGroupware').config(function ($routeProvider, $locationProvid
         //.preferredLanguage('pt');
         .determinePreferredLanguage();
 
-    //App routes:
+    //Parse DB initialization - TODO: get credentials from server
+    Parse.initialize('fgND42jI3nYnLqEGfBx8j56qPtEAYcQWfzCOu4wn', '6PWjVCxBxqgwqlCu33uXZ0zPViZ6pfv9kaO5lHx0');
+
+    //App client routes:
     $routeProvider
         .when('/', {
-            templateUrl: '/partials/main',
-            controller: 'mainCtrl'
+            templateUrl: '/partials/main/main',
+            controller: 'mgMainCtrl'
         })
         .otherwise({
-            templateUrl: '/partials/main',
-            controller: 'mainCtrl'
+            templateUrl: '/partials/main/main',
+            controller: 'mgMainCtrl'
         });
 });
-
-angular.module('MetaGroupware')
-    .controller('mainCtrl', function ($scope) {
-        $scope.myVar = 'Hello Angular ;-)';
-
-        Parse.initialize('fgND42jI3nYnLqEGfBx8j56qPtEAYcQWfzCOu4wn', '6PWjVCxBxqgwqlCu33uXZ0zPViZ6pfv9kaO5lHx0');
-
-        var Message = Parse.Object.extend('Messages');
-        var query = new Parse.Query(Message);
-        query.find({
-            success: function (data) {
-                //console.log(data);
-                $scope.message = data[0].attributes.message;
-                console.log($scope.message);
-                $scope.$apply();
-            },
-            error: function (response) {
-                alert('Ops there was an error :-(');
-                console.log(response);
-            }
-        });
-
-        $scope.testParse = function() {
-            var TestObject = Parse.Object.extend('TestObject');
-            var testObject = new TestObject();
-            testObject.save({foo: 'bar'}).then(function (object) {
-                alert('yay! it worked');
-                console.log(object);
-                $scope.testResult = object;
-                $scope.$apply();
-            });
-        };
-    });

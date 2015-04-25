@@ -1,0 +1,36 @@
+body {
+  padding-top: 50px;
+}
+header .jumbotron {
+  padding: 40px;
+  background-color: #7a62d3;
+  color: #fff;
+}
+.navbar-brand div {
+  display: inline-block;
+}
+.navbar-brand h6 {
+  margin-top: 0px;
+  margin-left: 5px;
+}
+.navbar-brand img {
+  width: 25px;
+  vertical-align: top;
+}
+.status-light {
+  -ms-transform: rotate(7deg);
+  -webkit-transform: rotate(7deg);
+  transform: rotate(7deg);
+}
+.online {
+  color: #90ee90;
+}
+.offline {
+  color: #f08080;
+}
+.btn-dark {
+  color: #fff;
+}
+.modal-body p {
+  margin: 10px;
+}

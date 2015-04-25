@@ -14,9 +14,11 @@
 
 <body ng-app="MetaGroupware">
 
-    <h1><%= __('Hello world') %>!</h1>
+    <ng-include src="'/partials/account/navbar'"> </ng-include>
 
     <ng-view> </ng-view>
+
+    <% include ../includes/footer %>
 
     <% include ../includes/scripts %>
 
