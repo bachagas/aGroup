@@ -26,6 +26,12 @@ header .jumbotron {
   color: #90ee90;
 }
 .offline {
+  color: #d3d3d3;
+}
+.warning {
+  color: #ffa07a;
+}
+.error {
   color: #f08080;
 }
 .btn-dark {
@@ -33,4 +39,14 @@ header .jumbotron {
 }
 .modal-body p {
   margin: 10px;
+}
+.msg-placeholder {
+  height: 65px;
+  justify-content: center;
+}
+.line-spin-fade-loader > div {
+  background: #add8e6;
+}
+.success {
+  background-color: #90ee90;
 }

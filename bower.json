@@ -21,6 +21,8 @@
     "bootstrap": "~3.3.4",
     "angular-bootstrap": "~0.12.1",
     "lodash": "~3.7.0",
-    "angular-translate-loader-static-files": "~2.6.1"
+    "angular-translate-loader-static-files": "~2.6.1",
+    "animate.css": "~3.2.6",
+    "loaders.css": "~0.1.1"
   }
 }

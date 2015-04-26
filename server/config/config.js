@@ -5,10 +5,11 @@ var rootPath = path.normalize(path.join(__dirname, '/../../'));
 var locales = ['pt_BR', 'en'];
 
 //Config variables:
-module.exports = {
-    //Environment
-    env: process.env.NODE_ENV,
+var config = {
     development: {
+        //Environment
+        env: 'development',
+
         // Root path of server
         rootPath: rootPath,
 
@@ -26,7 +27,7 @@ module.exports = {
     },
     production: {
         //Environment
-        env: process.env.NODE_ENV,
+        env: 'production',
 
         // Root path of server
         rootPath: rootPath,
@@ -43,4 +44,8 @@ module.exports = {
         //Locales for i18n internationalization
         locales: locales
     }
+};
+
+module.exports = function (env) {
+    return config[env];
 };

@@ -2,6 +2,17 @@
     <h3 class="modal-title">Sign in</h3>
 </div>
 <div class="modal-body">
+
+    <div class="msg-placeholder" ng-if="loading || errors">
+        <div class="loader" style="position: relative; left: 130px; top: 25px;" ng-if="loading">
+            <div class="loader-inner line-spin-fade-loader"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+        </div>
+        <!--<div class="alert alert-danger alert-dismissible animated fadeInDown" role="alert" ng-if="errors">
+            <button type="button" class="close" data-dismiss="alert" ng-click="closeAlert();">&times;</button>
+            {{errors}}
+        </div>-->
+    </div>
+
     <div class="form">
         <div class="form-group">
             <input type="text" class="form-control" placeholder="Email" ng-model="username">

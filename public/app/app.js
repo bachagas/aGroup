@@ -1,4 +1,4 @@
-angular.module('MetaGroupware', ['ngResource', 'ngRoute', 'pascalprecht.translate', 'ui.bootstrap']);
+angular.module('MetaGroupware', ['ngResource', 'ngRoute', 'pascalprecht.translate', 'ui.bootstrap', 'cgNotify']);
 
 angular.module('MetaGroupware').config(function ($routeProvider, $locationProvider, $translateProvider) {
     $locationProvider.html5Mode(true);
