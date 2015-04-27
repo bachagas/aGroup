@@ -10,7 +10,8 @@
     "should": 1,
     "describe": 1,
     "it": 1,
-    "Parse": 1
+    "Parse": 1,
+    "_": 1
   },
   
   "rules": {

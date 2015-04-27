@@ -1,0 +1,5 @@
+<% if (!!bootstrappedUser) { %>
+    <script type="text/javascript">
+        window.bootstrappedUserObjectString = '<%= JSON.stringify(bootstrappedUser) %>';
+    </script>
+<% } %>

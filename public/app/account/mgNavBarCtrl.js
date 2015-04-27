@@ -1,12 +1,12 @@
 angular.module('MetaGroupware')
-    .controller('mgNavBarCtrl', function ($scope, $modal, mgIdentity) {
+    .controller('mgNavBarCtrl', function ($scope, $modal, mgIdentity, mgAuth, $location, notify) {
         $scope.identity = mgIdentity;
 
         $scope.logIn = function () {
             $modal.open({
                 templateUrl: '/partials/account/signIn',
                 size: 'sm',
-                controller: function ($scope, $modalInstance, $http, notify, mgIdentity, mgAuth) {
+                controller: function ($scope, $modalInstance) {
                     $scope.errors = null;
                     $scope.loading = false;
 
@@ -34,6 +34,15 @@ angular.module('MetaGroupware')
                       $scope.errors = null;
                     };
                 }
+            });
+        };
+
+        $scope.signOut = function () {
+            mgAuth.logoutUser().then(function () {
+                $scope.username = '';
+                $scope.password = '';
+                notify({message: 'You have successfully logged out!', duration: 5000, classes: 'alert alert-success'});
+                $location.path('/');
             });
         };
     });

@@ -1,8 +1,11 @@
 <div class="panel panel-default">
     <div class="panel-heading text-center">
-        Your groups
+        Your friends
     </div>
     <div class="panel-body">
-        Body goes here...
+        <div class="row" ng-repeat="person in entities | filter: {type: 'person'} | orderByStatus">
+            <div class="col-md-4">{{person.name}}</div>
+            <div class="col-md-8 text-right"> {{person.status}} in {{person.statusDate | date: 'd, MMM H:mm'}} </div>
+        </div>
     </div>
 </div>

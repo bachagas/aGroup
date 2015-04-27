@@ -27,4 +27,11 @@ angular.module('MetaGroupware').config(function ($routeProvider, $locationProvid
             templateUrl: '/partials/main/main',
             controller: 'mgMainCtrl'
         });
+
+    //Global utilities - added to lodash
+    if (_) {
+        _.unescapeHtmlNumericCodes = function (str) {
+            return str.replace(/&#(\d+);/g, function (m, n) { return String.fromCharCode(n); });
+        };
+    }
 });

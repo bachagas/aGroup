@@ -11,6 +11,14 @@ angular.module('MetaGroupware').factory('mgAuth', function mgAuthFactory($http, 
                 }
             });
             return dfd.promise;
+        },
+        logoutUser: function () {
+            var dfd = $q.defer();
+            $http.post('/logout', {lougout: true}).then(function (response) {
+                mgIdentity.currentUser = undefined;
+                dfd.resolve(true);
+            });
+            return dfd.promise;
         }
     };
 });
