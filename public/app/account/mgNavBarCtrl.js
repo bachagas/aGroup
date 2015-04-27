@@ -38,11 +38,15 @@ angular.module('MetaGroupware')
         };
 
         $scope.signOut = function () {
-            mgAuth.logoutUser().then(function () {
-                $scope.username = '';
-                $scope.password = '';
-                notify({message: 'You have successfully logged out!', duration: 5000, classes: 'alert alert-success'});
-                $location.path('/');
+            mgAuth.logoutUser().then(function (success) {
+                if (success) {
+                    $scope.username = '';
+                    $scope.password = '';
+                    notify({message: 'You have successfully logged out!', duration: 5000, classes: 'alert alert-success'});
+                    $location.path('/');
+                } else {
+                    notify({message: 'Logout failed! Please, try again...', duration: 5000, classes: 'alert alert-danger'});
+                }
             });
         };
     });

@@ -1,4 +1,5 @@
-var passport = require('passport');
+var passport = require('passport'),
+    Parse = require('parse').Parse;
 
 exports.authenticate = function (req, res, next) {
     var auth = passport.authenticate('local', function (err, user) {
@@ -16,4 +17,10 @@ exports.authenticate = function (req, res, next) {
         });
     });
     auth(req, res, next);
+};
+
+exports.logout = function (req, res) {
+    Parse.User.logOut();
+    req.logout();
+    res.end();
 };

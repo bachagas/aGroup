@@ -15,8 +15,12 @@ angular.module('MetaGroupware').factory('mgAuth', function mgAuthFactory($http, 
         logoutUser: function () {
             var dfd = $q.defer();
             $http.post('/logout', {lougout: true}).then(function (response) {
-                mgIdentity.currentUser = undefined;
-                dfd.resolve(true);
+                if (!response.data.error) {
+                    mgIdentity.currentUser = undefined;
+                    dfd.resolve(true);
+                } else {
+                    dfd.resolve(false);
+                }
             });
             return dfd.promise;
         }
