@@ -5,27 +5,22 @@ var Parse = require('parse').Parse,
 module.exports = function () {
     passport.use(new LocalStrategy(
         function (username, password, done) {
-            var currentUser = Parse.User.current();
-            if (currentUser) {
-                return done(null, currentUser);
-            } else {
-                //authenticates using Parse logIn
-                Parse.User.logIn(username, password, {
-                    success: function (user) {
-                        // Do stuff after successful login.
-                        if (user) {
-                            return done(null, user);
-                        } else {
-                            return done(null, false);
-                        }
-                    },
-                    error: function (user, error) {
-                        // The login failed. Check error to see why.
-                        console.log('Error: ' + error.code + ' ' + error.message);
+            //authenticates using Parse logIn
+            Parse.User.logIn(username, password, {
+                success: function (user) {
+                    // Do stuff after successful login.
+                    if (user) {
+                        return done(null, user);
+                    } else {
                         return done(null, false);
                     }
-                });
-            }
+                },
+                error: function (user, error) {
+                    // The login failed. Check error to see why.
+                    console.log('Error: ' + error.code + ' ' + error.message);
+                    return done(null, false);
+                }
+            });
         }
     ));
 
