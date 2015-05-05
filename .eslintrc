@@ -1,7 +1,8 @@
 {
   "env": {
     "browser": 1,
-    "node" : 1
+    "node": 1,
+    "mocha": 1
   },
 
   "globals": {

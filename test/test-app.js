@@ -1,0 +1,1 @@
+angular.module('MetaGroupware', ['ngResource', 'ngRoute', 'pascalprecht.translate', 'ui.bootstrap', 'cgNotify']);

@@ -7,7 +7,7 @@ yellow='\033[1;33m' #Yellow
 NC='\033[0m' #No Color
 
 echo "Finding javascript files in project..."
-arqs=$(find ./ -name "*.js" | grep -v bower_components | grep -v node_modules)
+arqs=$(find ./ -name "*.js" | grep -v bower_components | grep -v node_modules | grep -v 'test/')
 #echo $arqs
 #for arq in $arqs; do echo $arq; eslint $arq; done;
 echo "Linting project files..."
