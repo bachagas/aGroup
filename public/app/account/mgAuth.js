@@ -1,10 +1,12 @@
-angular.module('MetaGroupware').factory('mgAuth', function mgAuthFactory($http, mgIdentity, $q) {
+angular.module('MetaGroupware').factory('mgAuth', function mgAuthFactory($http, mgIdentity, $q, User) {
     return {
         authenticateUser: function (username, password) {
             var dfd = $q.defer();
             $http.post('/login', {username: username, password: password}).then(function (response) {
                 if (response.data.success) {
-                    mgIdentity.currentUser = response.data.user;
+                    var user = new User();
+                    angular.extend(user, response.data.user);
+                    mgIdentity.currentUser = user;
                     dfd.resolve(true);
                 } else {
                     dfd.resolve(false);
@@ -23,6 +25,13 @@ angular.module('MetaGroupware').factory('mgAuth', function mgAuthFactory($http, 
                 }
             });
             return dfd.promise;
+        },
+        authorizeCurrentUserForRoute: function (role) {
+            if (mgIdentity.isAuthorized(role)) {
+                return true;
+            } else {
+                return $q.reject('not authorized');
+            }
         }
     };
 });

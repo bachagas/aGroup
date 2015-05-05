@@ -11,8 +11,8 @@ module.exports = function (config) {
             console.log(data.length + ' user(s) in Db');
             console.log(data);
             if (data.length < 3) {
-                var users = [new Parse.User({firstName: 'Bruno', lastName: 'Chagas', username: 'bachagas', password: '123456'}),
-                    new Parse.User({firstName: 'Clarisse', lastName: 'de Souza', username: 'clarisse', password: '123456'}),
+                var users = [new Parse.User({firstName: 'Bruno', lastName: 'Chagas', username: 'bachagas', password: '123456', roles: ['admin']}),
+                    new Parse.User({firstName: 'Clarisse', lastName: 'de Souza', username: 'clarisse', password: '123456', roles: []}),
                     new Parse.User({firstName: 'Hugo', lastName: 'Fuks', username: 'hugo', password: '123456'})];
                 users.forEach(function (user) {
                     user.signUp(null, {

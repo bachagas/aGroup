@@ -17,11 +17,23 @@ angular.module('MetaGroupware').config(function ($routeProvider, $locationProvid
     //Parse DB initialization - TODO: get credentials from server
     Parse.initialize('fgND42jI3nYnLqEGfBx8j56qPtEAYcQWfzCOu4wn', '6PWjVCxBxqgwqlCu33uXZ0zPViZ6pfv9kaO5lHx0');
 
+    //Route role checks:
+    var routeRoleChecks = {
+        admin: {auth: function (mgAuth) {
+            return mgAuth.authorizeCurrentUserForRoute('admin');
+        }}
+    };
+
     //App client routes:
     $routeProvider
         .when('/', {
             templateUrl: '/partials/main/main',
             controller: 'mgMainCtrl'
+        })
+        .when('/admin/users', {
+            templateUrl: '/partials/admin/user-list',
+            controller: 'mgUserListCtrl',
+            resolve: routeRoleChecks.admin
         })
         .otherwise({
             templateUrl: '/partials/main/main',
@@ -34,4 +46,12 @@ angular.module('MetaGroupware').config(function ($routeProvider, $locationProvid
             return str.replace(/&#(\d+);/g, function (m, n) { return String.fromCharCode(n); });
         };
     }
+});
+
+angular.module('MetaGroupware').run(function ($rootScope, $location) {
+    $rootScope.$on('$routeChangeError', function (evt, current, previous, rejection) {
+        if (rejection === 'not authorized') {
+            $location.path('/');
+        }
+    });
 });

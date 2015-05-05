@@ -24,3 +24,23 @@ exports.logout = function (req, res) {
     req.logout();
     res.end();
 };
+
+exports.requiresApiLogin = function (req, res, next) {
+    if (!req.isAuthenticated()) {
+        res.status(403);
+        res.end();
+    } else {
+        next();
+    }
+};
+
+exports.requiresRole = function (role) {
+    return function (req, res, next) {
+        if (!req.isAuthenticated() || req.user.attributes.roles.indexOf(role) === -1) {
+            res.status(403);
+            res.end();
+        } else {
+            next();
+        }
+    };
+};
