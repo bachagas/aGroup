@@ -20,5 +20,5 @@ if [[ $result != 0 ]] ; then
 fi
 echo "Done!"
 echo
-echo -e "${green}--> Congrats! Everything seems ok with your code!"
+echo -e "${green}--> Well done! Everything seems ok with your code! ;-)"
 echo

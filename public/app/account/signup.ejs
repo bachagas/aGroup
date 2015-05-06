@@ -1,0 +1,46 @@
+<div class="container">
+    <div class="well">
+        <form class="form-horizontal" name="signupForm">
+            <div class="form-group">
+                <label class="col-md-2 control-label">Username</label>
+                <div class="col-md-10">
+                    <input class="form-control" type="text" name="username" placeholder="Username" ng-model="username" required/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label">Password</label>
+                <div class="col-md-10">
+                    <input class="form-control" type="password" name="password" placeholder="Password" ng-model="password" required/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label">Email</label>
+                <div class="col-md-10">
+                    <input class="form-control" type="email" name="email" placeholder="Email" ng-model="email" required/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label">First name</label>
+                <div class="col-md-10">
+                    <input class="form-control" type="text" name="fName" placeholder="First name" ng-model="fName" required/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label">Last name</label>
+                <div class="col-md-10">
+                    <input class="form-control" type="text" name="lName" placeholder="Last name" ng-model="lName" required/>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-10 col-offset-2">
+                    <div class="pull-right">
+                        <button class="btn btn-primary" ng-click="signup()" ng-disabled="signupForm.$invalid"> Submit </button>
+                        &nbsp;
+                        <a class="btn btn-default" href="/"> Cancel </a>
+                    </div>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>

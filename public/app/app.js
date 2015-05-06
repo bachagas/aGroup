@@ -30,6 +30,10 @@ angular.module('MetaGroupware').config(function ($routeProvider, $locationProvid
             templateUrl: '/partials/main/main',
             controller: 'mgMainCtrl'
         })
+        .when('/signup', {
+            templateUrl: '/partials/account/signup',
+            controller: 'mgSignupCtrl'
+        })
         .when('/admin/users', {
             templateUrl: '/partials/admin/user-list',
             controller: 'mgUserListCtrl',

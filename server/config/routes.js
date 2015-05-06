@@ -1,19 +1,10 @@
 var auth = require('./auth'),
-    Parse = require('parse').Parse;
+    Users = require('../controllers/users');
 
 module.exports = function (app) {
     //Api routes:
-    app.get('/api/users', auth.requiresRole('admin'), function (req, res) {
-        var query = new Parse.Query(Parse.User);
-        query.find({
-            success: function (data) {
-                res.send(data);
-            },
-            error: function (err) {
-                res.send(err);
-            }
-        });
-    });
+    app.get('/api/users', auth.requiresRole('admin'), Users.getUsers);
+    app.post('/api/users', Users.createUser);
 
     //Api routes:
     app.get('/partials/*', function (req, res) {
