@@ -1,5 +1,5 @@
 angular.module('MetaGroupware').filter('orderByStatus', function orderByStatusFilter() {
-    var statusPriorities = ['online', 'error', 'warning', 'offline', undefined];
+    var statusPriorities = ['online', 'opened', 'error', 'warning', 'pending', 'offline', 'closed', undefined];
 
     return function(input) {
         if (_.isArray(input)) {

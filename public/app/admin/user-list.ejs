@@ -1,12 +1,10 @@
-<body class="container">
-    <div class="row">
-        <div class="col-md-10">
-            <table class="table">
-                <th>User</th>
-                <tr ng-repeat="user in users">
-                    <td>{{user.firstName + ' ' + user.lastName}}</td>
-                </tr>
-            </table>
-        </div>
-    </div>
-</body>
+<div class="container">
+    <table class="table table-hover table-condensed">
+        <th>Name</th>
+        <th>Email</th>
+        <tr ng-repeat="user in users">
+            <td>{{user.firstName + ' ' + user.lastName}}</td>
+            <td>{{user.email}}</td>
+        </tr>
+    </table>
+</div>

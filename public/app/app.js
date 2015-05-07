@@ -42,6 +42,11 @@ angular.module('MetaGroupware').config(function ($routeProvider, $locationProvid
             controller: 'mgProfileCtrl',
             resolve: routeRoleChecks.user
         })
+        .when('/events', {
+            templateUrl: '/partials/events/event-list',
+            controller: 'mgEventListCtrl',
+            resolve: routeRoleChecks.user
+        })
         .when('/admin/users', {
             templateUrl: '/partials/admin/user-list',
             controller: 'mgUserListCtrl',

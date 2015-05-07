@@ -37,6 +37,15 @@ header .jumbotron {
 .error {
   color: #f08080;
 }
+.opened {
+  color: #90ee90;
+}
+.closed {
+  color: #d3d3d3;
+}
+.pending {
+  color: #ff0;
+}
 .btn-dark {
   color: #fff;
 }
@@ -83,4 +92,16 @@ header .jumbotron {
 }
 .btn-border a {
   text-decoration: none;
+}
+.top-padding-med {
+  padding-top: 10px;
+}
+.margin-left-med {
+  margin-left: 10px;
+}
+.margin-top-med {
+  margin-top: 10px;
+}
+.margin-bottom-med {
+  margin-bottom: 10px;
 }
