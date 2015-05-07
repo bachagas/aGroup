@@ -26,6 +26,20 @@ angular.module('MetaGroupware').factory('mgAuth', function mgAuthFactory($http, 
             });
             return dfd.promise;
         },
+        updateCurrentUser: function (changedUserData) {
+            var dfd = $q.defer();
+
+            var clone = angular.copy(mgIdentity.currentUser);
+            angular.extend(clone, changedUserData);
+
+            clone.$update().then(function (user) {
+                mgIdentity.currentUser = user;
+                dfd.resolve();
+            }, function (response) {
+                dfd.reject(response.data.reason);
+            });
+            return dfd.promise;
+        },
         logoutUser: function () {
             var dfd = $q.defer();
             $http.post('/logout', {lougout: true}).then(function (response) {
@@ -40,6 +54,13 @@ angular.module('MetaGroupware').factory('mgAuth', function mgAuthFactory($http, 
         },
         authorizeCurrentUserForRoute: function (role) {
             if (mgIdentity.isAuthorized(role)) {
+                return true;
+            } else {
+                return $q.reject('not authorized');
+            }
+        },
+        authorizeAuthenticatedUserForRoute: function () {
+            if (mgIdentity.isAuthenticated()) {
                 return true;
             } else {
                 return $q.reject('not authorized');

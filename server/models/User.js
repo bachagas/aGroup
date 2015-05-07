@@ -10,9 +10,11 @@ function createDefaultUsers() {
             console.log(data.length + ' user(s) in Db:');
             console.log(_.trunc(JSON.stringify(data), 120));
             if (data.length < 3) {
-                var users = [new Parse.User({firstName: 'Bruno', lastName: 'Chagas', username: 'bachagas', password: '123456', roles: ['admin']}),
+                var users = [
+                    new Parse.User({firstName: 'Bruno', lastName: 'Chagas', username: 'bachagas', password: '123456', roles: ['admin']}),
                     new Parse.User({firstName: 'Clarisse', lastName: 'de Souza', username: 'clarisse', password: '123456', roles: []}),
-                    new Parse.User({firstName: 'Hugo', lastName: 'Fuks', username: 'hugo', password: '123456'})];
+                    new Parse.User({firstName: 'Hugo', lastName: 'Fuks', username: 'hugo', password: '123456'})
+                ];
                 users.forEach(function (user) {
                     user.signUp(null, {
                         success: function (user) {

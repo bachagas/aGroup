@@ -1,7 +1,12 @@
 <body class="container">
-    <table class="table">
-        <tr ng-repeat="user in users">
-            <td>{{user.firstName + ' ' + user.lastName}}</td>
-        </tr>
-    </table>
+    <div class="row">
+        <div class="col-md-10">
+            <table class="table">
+                <th>User</th>
+                <tr ng-repeat="user in users">
+                    <td>{{user.firstName + ' ' + user.lastName}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
 </body>

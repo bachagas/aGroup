@@ -1,8 +1,7 @@
-var Parse = require('parse').Parse,
-    User = require('../models/User');
+var Parse = require('parse').Parse;
 
 module.exports = function (config) {
     Parse.initialize(config.db.appId, config.db.appKey);
 
-    User.createDefaultUsers();
+    require('../models/User').createDefaultUsers();
 };

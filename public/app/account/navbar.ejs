@@ -23,7 +23,10 @@
             </ul>
             <ul class="nav navbar-nav navbar-right" ng-hide="identity.isAuthenticated();">
                 <li><a href="" ng-click="logIn();">LOG IN</a></li>
-                <li><a class="btn" href="/signup">SIGN UP</a>
+                <li>
+                    <form class="navbar-form navbar-left" role="search">
+                        <button class="btn btn-border transparent"><a href="/signup">SIGN UP</a></button>
+                    </form>
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right" ng-show="identity.isAuthenticated();">
@@ -31,6 +34,8 @@
                     <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button">{{identity.currentUser.firstName ? identity.currentUser.firstName + ' ' + identity.currentUser.lastName: identity.currentUser.username}} <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
                         <li ng-show="identity.currentUser.isAdmin()"><a href="/admin/users">User admin</a></li>
+                        <li><a href="/profile">Profile</a></li>
+                        <li class="divider"></li>
                         <li><a href="" ng-click="signOut();">Sign out</a></li>
                     </ul>
                 </li>

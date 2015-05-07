@@ -53,3 +53,34 @@ header .jumbotron {
 .success {
   background-color: #90ee90;
 }
+.transparent {
+  background: #333;
+  background: rgba(255,255,255,0.7);
+}
+.transparent a,
+.transparent a:link,
+.transparent a:visited {
+  color: #777;
+}
+.transparent a:hover {
+  color: #333;
+}
+.transparent-dark {
+  color: #fff;
+  background: #333;
+  background: rgba(0,0,0,0.3);
+}
+.transparent-dark a,
+.transparent-dark a:link,
+.transparent-dark a:visited {
+  color: #fff;
+}
+.transparent-dark a:hover {
+  color: #efefef;
+}
+.btn-border {
+  border: solid 3px #d3d3d3;
+}
+.btn-border a {
+  text-decoration: none;
+}

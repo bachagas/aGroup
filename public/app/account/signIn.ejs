@@ -15,19 +15,19 @@
 
     <form class="form" name="signInForm" ng-submit="logIn(username, password);">
         <div class="form-group">
-            <input type="text" class="form-control" placeholder="Username" ng-model="username">
+            <input type="text" name="username" class="form-control" placeholder="Username" ng-model="username" required>
         </div>
         <div class="form-group">
-            <input type="password" class="form-control" placeholder="Password" ng-model="password">
+            <input type="password" name="password" class="form-control" placeholder="Password" ng-model="password" required>
         </div>
         <div class="checkbox">
             <label>
                 <input type="checkbox"> Keep me logged in
             </label>
         </div>
-        <button class="btn btn-primary btn-block">Sign me in</button>
+        <button class="btn btn-primary btn-block" ng-disabled="signInForm.$invalid"> Sign me in </button>
     </form>
-    <p class="text-center"><small>Doesn't have one? Sign up <a href="signUp" ng-click="cancel();">here</a>.</small></p>
+    <p class="text-center"><small>Doesn't have one? Sign up <a href="/signup" ng-click="cancel();">here</a>.</small></p>
 <div class="modal-footer">
     <!--<button class="btn btn-primary" ng-click="ok()">OK</button>-->
     <button class="btn btn-warning" ng-click="cancel();">Cancel</button>

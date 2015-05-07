@@ -21,6 +21,9 @@ angular.module('MetaGroupware').config(function ($routeProvider, $locationProvid
     var routeRoleChecks = {
         admin: {auth: function (mgAuth) {
             return mgAuth.authorizeCurrentUserForRoute('admin');
+        }},
+        user: {auth: function (mgAuth) {
+            return mgAuth.authorizeAuthenticatedUserForRoute();
         }}
     };
 
@@ -33,6 +36,11 @@ angular.module('MetaGroupware').config(function ($routeProvider, $locationProvid
         .when('/signup', {
             templateUrl: '/partials/account/signup',
             controller: 'mgSignupCtrl'
+        })
+        .when('/profile', {
+            templateUrl: '/partials/account/profile',
+            controller: 'mgProfileCtrl',
+            resolve: routeRoleChecks.user
         })
         .when('/admin/users', {
             templateUrl: '/partials/admin/user-list',

@@ -5,6 +5,7 @@ module.exports = function (app) {
     //Api routes:
     app.get('/api/users', auth.requiresRole('admin'), Users.getUsers);
     app.post('/api/users', Users.createUser);
+    app.put('/api/users', Users.updateUser);
 
     //Api routes:
     app.get('/partials/*', function (req, res) {
