@@ -26,9 +26,14 @@ angular.module('MetaGroupware').config(function ($routeProvider, $locationProvid
 
     //App client routes:
     $routeProvider
+        .when('/landing', {
+            templateUrl: '/partials/landing/',
+            controller: 'mgLandingCtrl'
+        })
         .when('/', {
             templateUrl: '/partials/main/main',
-            controller: 'mgMainCtrl'
+            controller: 'mgMainCtrl',
+            resolve: routeRoleChecks.user
         })
         .when('/signup', {
             templateUrl: '/partials/account/signup',
@@ -55,8 +60,8 @@ angular.module('MetaGroupware').config(function ($routeProvider, $locationProvid
             resolve: routeRoleChecks.admin
         })
         .otherwise({
-            templateUrl: '/partials/main/',
-            controller: 'mgMainCtrl'
+            templateUrl: '/partials/landing/',
+            controller: 'mgLandingCtrl'
         });
 
     //Global utilities - added to lodash
@@ -70,7 +75,7 @@ angular.module('MetaGroupware').config(function ($routeProvider, $locationProvid
 angular.module('MetaGroupware').run(function ($rootScope, $location) {
     $rootScope.$on('$routeChangeError', function (evt, current, previous, rejection) {
         if (rejection === 'not authorized') {
-            $location.path('/');
+            $location.path('/landing');
         }
     });
 });
