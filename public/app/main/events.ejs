@@ -4,7 +4,7 @@
     </div>
     <div class="panel-body">
         <div class="row" ng-repeat="event in events | orderByStatus | limitTo: 10">
-            <div class="col-md-9">{{event.title}}</div>
+            <div class="col-md-9"><a ng-href="/events/{{event.objectId}}" ng-class="{new: event.featured}"> {{event.title}} </a></div>
             <div class="col-md-3 text-center"><span class="glyphicon glyphicon-flag status-light" ng-class="event.status" title="{{event.status}}"> </span> </div>
         </tr>
     </div>

@@ -12,9 +12,9 @@ function createDefaultEvents() {
             console.log(_.trunc(JSON.stringify(data), 120));
             if (data.length < 3) {
                 var events = [
-                    new Event({title: 'Message from some user', content: 'Hello, I need some help here!', status: 'opened', statusDate: new Date(), tags: ['help', 'user']}),
-                    new Event({title: 'Bug in system', content: 'Oh, there is a bug!', status: 'closed', statusDate: new Date(), tags: ['bug']}),
-                    new Event({title: 'New data available', content: 'Hello, you have connected something!', status: 'pending', statusDate: new Date(), tags: ['data', 'device']})
+                    new Event({title: 'Message from some user', content: 'Hello, I need some help here!', status: 'opened', statusDate: new Date(), tags: ['help', 'user'], featured: true}),
+                    new Event({title: 'Bug in system', content: 'Oh, there is a bug!', status: 'closed', statusDate: new Date(), tags: ['bug'], featured: false}),
+                    new Event({title: 'New data available', content: 'Hello, you have connected something!', status: 'pending', statusDate: new Date(), tags: ['data', 'device'], featured: false})
                 ];
                 events.forEach(function (event) {
                     event.save(null, {

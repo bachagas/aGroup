@@ -13,7 +13,7 @@
             <th>Date</th>
             <th>Status</th>
             <tr ng-repeat="event in events | filter: searchText | orderBy: sortOrder">
-                <td>{{event.title}}</td>
+                <td><a ng-href="/events/{{event.objectId}}" ng-class="{new: event.featured}"> {{event.title}} </a></td>
                 <td>{{event.statusDate.iso | date: 'd, MMM H:mm'}}</td>
                 <td class="text-center"><span class="glyphicon glyphicon-flag status-light" ng-class="event.status" title="{{event.status}}"> </span> </td>
             </tr>

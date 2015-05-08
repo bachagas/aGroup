@@ -9,6 +9,16 @@ header .jumbotron {
   background-color: #7a62d3;
   color: #fff;
 }
+.text-shadowed {
+  text-shadow: 2px 2px 2px rgba(0,0,0,0.8);
+}
+.img-feature {
+  height: 140px;
+  width: 140px;
+  float: none;
+  margin: 0 auto;
+  border: solid 7px #d3d3d3;
+}
 .navbar-brand div {
   display: inline-block;
 }
@@ -45,6 +55,9 @@ header .jumbotron {
 }
 .pending {
   color: #ff0;
+}
+.new {
+  font-weight: bold;
 }
 .btn-dark {
   color: #fff;

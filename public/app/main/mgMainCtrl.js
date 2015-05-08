@@ -1,4 +1,6 @@
-angular.module('MetaGroupware').controller('mgMainCtrl', function ($scope, CachedEvent) {
+angular.module('MetaGroupware').controller('mgMainCtrl', function ($scope, mgIdentity, CachedEvent) {
+    $scope.currentUser = mgIdentity.currentUser;
+
     $scope.entities = [
         {name: 'TV', status: 'offline', statusDate: new Date(), type: 'device'},
         {name: 'Decoder', status: 'error', statusDate: new Date(), type: 'device'},

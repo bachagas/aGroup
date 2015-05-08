@@ -1,0 +1,16 @@
+<div class="container">
+    <h1> {{event.title}} </h1>
+    <div class="row">
+        <div class="col-md-6">
+            <h3 ng-show="event.featured"> Featured </h3>
+            <h3> Created on {{event.createdAt | date}}</h3>
+        </div>
+
+        <div class="col-md-6">
+            <div class="panel panel-primary">
+                <div class="panel-heading"> Tags </div>
+                <div class="panel-body"> <span ng-repeat="tag in event.tags"> {{tag}} </span> </div>
+            </div>
+        </div>
+    </div>
+</div>

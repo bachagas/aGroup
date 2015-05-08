@@ -14,9 +14,6 @@ angular.module('MetaGroupware').config(function ($routeProvider, $locationProvid
         //.preferredLanguage('pt');
         .determinePreferredLanguage();
 
-    //Parse DB initialization - TODO: get credentials from server
-    Parse.initialize('fgND42jI3nYnLqEGfBx8j56qPtEAYcQWfzCOu4wn', '6PWjVCxBxqgwqlCu33uXZ0zPViZ6pfv9kaO5lHx0');
-
     //Route role checks:
     var routeRoleChecks = {
         admin: {auth: function (mgAuth) {
@@ -47,13 +44,18 @@ angular.module('MetaGroupware').config(function ($routeProvider, $locationProvid
             controller: 'mgEventListCtrl',
             resolve: routeRoleChecks.user
         })
+        .when('/events/:id', {
+            templateUrl: '/partials/events/event-details',
+            controller: 'mgEventDetailCtrl',
+            resolve: routeRoleChecks.user
+        })
         .when('/admin/users', {
             templateUrl: '/partials/admin/user-list',
             controller: 'mgUserListCtrl',
             resolve: routeRoleChecks.admin
         })
         .otherwise({
-            templateUrl: '/partials/main/main',
+            templateUrl: '/partials/main/',
             controller: 'mgMainCtrl'
         });
 

@@ -9,6 +9,7 @@ module.exports = function (app) {
     app.put('/api/users', Users.updateUser);
 
     app.get('/api/events', Events.getEvents);
+    app.get('/api/events/:id', Events.getEventById);
     //app.post('/api/events', Events.createEvent);
     //app.put('/api/events', Events.updateEvent);
 
