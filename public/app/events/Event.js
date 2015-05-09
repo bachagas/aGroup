@@ -1,5 +1,5 @@
 angular.module('MetaGroupware').factory('Event', function ($resource) {
-    var EventResource = $resource('/api/events/:id', {id: '@id'}, {
+    var EventResource = $resource('/api/events/:objectId', {objectId: '@id'}, {
         update: {method: 'PUT', isArray: false}
     });
 

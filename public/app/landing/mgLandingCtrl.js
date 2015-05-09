@@ -1,3 +1,3 @@
-angular.module('MetaGroupware').controller('mgMainCtrl', function ($scope) {
+angular.module('MetaGroupware').controller('mgLandingCtrl', function ($scope) {
     $scope.hello = 'Hello world!';
 });

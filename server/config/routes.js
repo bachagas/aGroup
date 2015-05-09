@@ -1,6 +1,7 @@
 var auth = require('./auth'),
     Users = require('../controllers/users'),
-    Events = require('../controllers/events');
+    Events = require('../controllers/events'),
+    Entities = require('../controllers/entities');
 
 module.exports = function (app) {
     //Api routes:
@@ -12,6 +13,11 @@ module.exports = function (app) {
     app.get('/api/events/:id', Events.getEventById);
     //app.post('/api/events', Events.createEvent);
     //app.put('/api/events', Events.updateEvent);
+
+    app.get('/api/entities', Entities.getEntities);
+    //app.get('/api/entities/:id', Entities.getEventById);
+    //app.post('/api/entities', Entities.createEvent);
+    //app.put('/api/entities', Entities.updateEvent);
 
     //Api routes:
     app.get('/partials/*', function (req, res) {

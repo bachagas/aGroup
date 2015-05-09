@@ -26,11 +26,11 @@ angular.module('MetaGroupware').config(function ($routeProvider, $locationProvid
 
     //App client routes:
     $routeProvider
-        .when('/landing', {
+        .when('/', {
             templateUrl: '/partials/landing/',
             controller: 'mgLandingCtrl'
         })
-        .when('/', {
+        .when('/main', {
             templateUrl: '/partials/main/main',
             controller: 'mgMainCtrl',
             resolve: routeRoleChecks.user
@@ -74,8 +74,8 @@ angular.module('MetaGroupware').config(function ($routeProvider, $locationProvid
 
 angular.module('MetaGroupware').run(function ($rootScope, $location) {
     $rootScope.$on('$routeChangeError', function (evt, current, previous, rejection) {
-        if (rejection === 'not authorized') {
-            $location.path('/landing');
+        if (rejection == 'not authorized') {
+            $location.path('/');
         }
     });
 });

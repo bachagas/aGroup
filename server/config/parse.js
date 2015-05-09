@@ -5,4 +5,5 @@ module.exports = function (config) {
 
     require('../models/User').createDefaultUsers();
     require('../models/Event').createDefaultEvents();
+    require('../models/Entity').createDefaultEntities();
 };

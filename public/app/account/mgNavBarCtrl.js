@@ -18,7 +18,7 @@ angular.module('MetaGroupware')
                                $scope.loading = false;
                                notify({message: 'Welcome ' + (mgIdentity.currentUser.firstName ? mgIdentity.currentUser.firstName : mgIdentity.currentUser.username) + '!', duration: 5000, classes: 'alert alert-success'});
                                $modalInstance.close();
-                               $location.path('/');
+                               $location.path('/main');
                            } else {
                                $scope.loading = false;
                                $scope.errors = 'failed to log in!';
@@ -44,7 +44,7 @@ angular.module('MetaGroupware')
                     $scope.username = '';
                     $scope.password = '';
                     notify({message: 'You have successfully logged out!', duration: 5000, classes: 'alert alert-success'});
-                    $location.path('/landing');
+                    $location.path('/');
                 } else {
                     notify({message: 'Logout failed! Please, try again...', duration: 5000, classes: 'alert alert-danger'});
                 }
