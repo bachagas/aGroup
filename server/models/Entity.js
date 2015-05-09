@@ -8,7 +8,7 @@ function createDefaultEntities() {
     //Retrieve and check for existent users. Create default users if none found
     query.find({
         success: function (data) {
-            console.log('Found ' + data.length + ' event in Db:');
+            console.log('Found ' + data.length + ' entities in Db:');
             console.log(_.trunc(JSON.stringify(data), 120));
             if (data.length < 10) {
                 var events = [
