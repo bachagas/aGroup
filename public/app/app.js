@@ -21,6 +21,9 @@ angular.module('MetaGroupware').config(function ($routeProvider, $locationProvid
         }},
         user: {auth: function (mgAuth) {
             return mgAuth.authorizeAuthenticatedUserForRoute();
+        }},
+        notLoggedIn: {auth: function (mgAuth) {
+            return mgAuth.notAlreadyAuthenticatedUserForRoute();
         }}
     };
 
@@ -29,6 +32,11 @@ angular.module('MetaGroupware').config(function ($routeProvider, $locationProvid
         .when('/', {
             templateUrl: '/partials/landing/',
             controller: 'mgLandingCtrl'
+        })
+        .when('/login', {
+            templateUrl: '/partials/landing/',
+            controller: 'mgLandingCtrl',
+            resolve: routeRoleChecks.notLoggedIn
         })
         .when('/main', {
             templateUrl: '/partials/main/main',
@@ -76,6 +84,9 @@ angular.module('MetaGroupware').run(function ($rootScope, $location) {
     $rootScope.$on('$routeChangeError', function (evt, current, previous, rejection) {
         if (rejection == 'not authorized') {
             $location.path('/');
+        }
+        if (rejection == 'already logged in') {
+            $location.path('/main');
         }
     });
 });

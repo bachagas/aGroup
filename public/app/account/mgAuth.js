@@ -65,6 +65,13 @@ angular.module('MetaGroupware').factory('mgAuth', function mgAuthFactory($http, 
             } else {
                 return $q.reject('not authorized');
             }
+        },
+        notAlreadyAuthenticatedUserForRoute: function () {
+            if (mgIdentity.isAuthenticated()) {
+                return $q.reject('already logged in');
+            } else {
+                return true;
+            }
         }
     };
 });

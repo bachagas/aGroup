@@ -50,4 +50,8 @@ angular.module('MetaGroupware')
                 }
             });
         };
+
+        if ($location.path() == '/login') { //automatically opens login dialog
+            $scope.logIn();
+        }
     });
