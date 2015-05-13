@@ -4,8 +4,8 @@
     </div>
     <div class="panel-body">
         <div class="row" ng-repeat="device in entities | filter: {type: 'device'} | orderByStatus">
-            <div class="col-md-9">{{device.name}}</div>
-            <div class="col-md-3 text-center"><span class="glyphicon glyphicon-flag status-light" ng-class="device.status"> </span> {{device.status}} </div>
+            <div class="col-xs-9">{{device.name}}</div>
+            <div class="col-xs-3 text-center"><span class="glyphicon glyphicon-flag status-light" ng-class="device.status" title="{{device.status}}"> </span> <p>{{device.status}}</p> </div>
         </div>
     </div>
 </div>

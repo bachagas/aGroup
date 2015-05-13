@@ -4,8 +4,8 @@
     </div>
     <div class="panel-body">
         <div class="row" ng-repeat="person in entities | filter: {type: 'person'} | orderByStatus">
-            <div class="col-md-4">{{person.name}}</div>
-            <div class="col-md-8 text-right"> {{person.status}} in {{person.statusDate.iso | date: 'd, MMM H:mm'}} </div>
+            <div class="col-xs-4">{{person.name}}</div>
+            <div class="col-xs-8 text-right"> {{person.status}} in {{person.statusDate.iso | date: 'd, MMM H:mm'}} </div>
         </div>
     </div>
 </div>
