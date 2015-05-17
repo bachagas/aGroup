@@ -3,6 +3,7 @@ var Parse = require('parse').Parse,
 
 function createDefaultEvents() {
     var Event = Parse.Object.extend('Event');
+    var EventDetail = Parse.Object.extend('EventDetail');
     var query = new Parse.Query(Event);
     query.ascending('createdAt');
     //Retrieve and check for existent users. Create default users if none found
@@ -12,11 +13,16 @@ function createDefaultEvents() {
             console.log(_.trunc(JSON.stringify(data), 120));
             if (data.length < 3) {
                 var events = [
-                    new Event({title: 'Message from some user', content: 'Hello, I need some help here!', status: 'opened', statusDate: new Date(), tags: ['help', 'user'], featured: true}),
-                    new Event({title: 'Bug in system', content: 'Oh, there is a bug!', status: 'closed', statusDate: new Date(), tags: ['bug'], featured: false}),
-                    new Event({title: 'New data available', content: 'Hello, you have connected something!', status: 'pending', statusDate: new Date(), tags: ['data', 'device'], featured: false})
+                    new Event({title: 'Message from some user', status: 'opened', statusDate: new Date(Date.now() - 154329876), tags: ['help', 'user'], featured: true, createdBy: 'user'}),
+                    new Event({title: 'Bug in system', status: 'closed', statusDate: new Date(Date.now() - 123456789), tags: ['bug'], featured: false, createdBy: 'developer'}),
+                    new Event({title: 'New data available', status: 'pending', statusDate: new Date(Date.now() - 198765432), tags: ['data', 'device'], featured: false, createdBy: 'Some sensor'})
                 ];
-                events.forEach(function (event) {
+                var eventDetails = [
+                    new EventDetail({parent: events[0], content: 'Hello, I need some help here!', status: 'opened', postedBy: 'user'}),
+                    new EventDetail({parent: events[1], content: 'Oh, there is a bug!', status: 'closed', postedBy: 'developer'}),
+                    new EventDetail({parent: events[2], content: 'Hello, you have connected something!', status: 'pending', postedBy: 'Some sensor'})
+                ];
+                eventDetails.forEach(function (event) {
                     event.save(null, {
                         success: function (data) {
                             console.log('New event created:');

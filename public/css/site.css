@@ -118,3 +118,6 @@ header .jumbotron {
 .margin-bottom-med {
   margin-bottom: 10px;
 }
+.badge {
+  background-color: #cd5c5c;
+}

@@ -12,16 +12,16 @@ function createDefaultEntities() {
             console.log(_.trunc(JSON.stringify(data), 120));
             if (data.length < 10) {
                 var events = [
-                    new Entity({name: 'TV', status: 'offline', statusDate: new Date(), type: 'device'}),
-                    new Entity({name: 'Decoder', status: 'error', statusDate: new Date(), type: 'device'}),
-                    new Entity({name: 'Lamp', status: 'warning', statusDate: new Date(), type: 'device'}),
-                    new Entity({name: 'Headset', status: 'offline', statusDate: new Date(), type: 'device'}),
-                    new Entity({name: 'My computer', status: 'online', statusDate: new Date(), type: 'device'}),
-                    new Entity({name: 'Moto G', status: 'online', statusDate: new Date(), type: 'device'}),
-                    new Entity({name: 'Bruno', status: 'online', statusDate: new Date(), type: 'person'}),
-                    new Entity({name: 'Marcio', status: 'offline', statusDate: new Date(), type: 'person'}),
-                    new Entity({name: 'Hugo', status: 'offline', statusDate: new Date(), type: 'person'}),
-                    new Entity({name: 'Felipe', status: 'warning', statusDate: new Date(), type: 'person'})
+                    new Entity({name: 'TV', status: 'offline', statusDate: new Date(Date.now() - 335000000), type: 'device'}),
+                    new Entity({name: 'Decoder', status: 'error', statusDate: new Date(Date.now() - 330000000), type: 'device'}),
+                    new Entity({name: 'Lamp', status: 'warning', statusDate: new Date(Date.now() - 340000000), type: 'device'}),
+                    new Entity({name: 'Headset', status: 'offline', statusDate: new Date(Date.now() - 350000000), type: 'device'}),
+                    new Entity({name: 'My computer', status: 'online', statusDate: new Date(Date.now() - 360000000), type: 'device'}),
+                    new Entity({name: 'Moto G', status: 'online', statusDate: new Date(Date.now() - 370000000), type: 'device'}),
+                    new Entity({name: 'a Developer', status: 'online', statusDate: new Date(Date.now() - 500000000), type: 'person'}),
+                    new Entity({name: 'a User', status: 'offline', statusDate: new Date(Date.now() - 400000000), type: 'person'}),
+                    new Entity({name: 'a Friend', status: 'offline', statusDate: new Date(Date.now() - 300000000), type: 'person'}),
+                    new Entity({name: 'a Caregiver', status: 'warning', statusDate: new Date(Date.now() - 200000000), type: 'person'})
                 ];
                 events.forEach(function (event) {
                     event.save(null, {

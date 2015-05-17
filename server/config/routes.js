@@ -1,23 +1,19 @@
 var auth = require('./auth'),
-    Users = require('../controllers/users'),
-    Events = require('../controllers/events'),
-    Entities = require('../controllers/entities');
+    users = require('../controllers/users'),
+    events = require('../controllers/events'),
+    entities = require('../controllers/entities');
 
 module.exports = function (app) {
     //Api routes:
-    app.get('/api/users', auth.requiresRole('admin'), Users.getUsers);
-    app.post('/api/users', Users.createUser);
-    app.put('/api/users', Users.updateUser);
+    app.get('/api/users', auth.requiresRole('admin'), users.getUsers);
+    app.post('/api/users', users.createUser);
+    app.put('/api/users', users.updateUser);
 
-    app.get('/api/events', Events.getEvents);
-    app.get('/api/events/:id', Events.getEventById);
-    //app.post('/api/events', Events.createEvent);
-    //app.put('/api/events', Events.updateEvent);
+    app.get('/api/events', events.getEvents);
+    app.get('/api/events/:id', events.getEventById);
+    app.post('/api/events', events.createNewEventDetail);
 
-    app.get('/api/entities', Entities.getEntities);
-    //app.get('/api/entities/:id', Entities.getEventById);
-    //app.post('/api/entities', Entities.createEvent);
-    //app.put('/api/entities', Entities.updateEvent);
+    app.get('/api/entities', entities.getEntities);
 
     //Api routes:
     app.get('/partials/*', function (req, res) {

@@ -1,16 +1,66 @@
-<div class="container">
-    <h1> {{event.title}} </h1>
+<div class="container" ng-cloak>
     <div class="row">
-        <div class="col-md-6">
-            <h3 ng-show="event.featured"> Featured </h3>
-            <h3> Created on {{event.createdAt | date}}</h3>
+        <h1> {{event.title}} <span class="badge" ng-if="event.featured">new</span>
+            <small> Created on {{event.createdAt | date}}</small>
+            <span class="glyphicon glyphicon-flag status-light" ng-class="event.status" title="{{event.status}}"> </span> <small>({{event.status}})</small>
+        </h1>
+        <div class="col-md-12">
+            <h3> {{event.content}} </h3>
+            <h1> <small>(by {{event.createdBy}})</small> </h1>
         </div>
-
-        <div class="col-md-6">
+        <!--<div class="col-md-3">
             <div class="panel panel-primary">
                 <div class="panel-heading"> Tags </div>
                 <div class="panel-body"> <span ng-repeat="tag in event.tags"> {{tag}} </span> </div>
             </div>
-        </div>
+        </div>-->
     </div>
+    <h2><small>History:</small></h2>
+    <accordion close-others="false">
+        <accordion-group heading="{{detail.createdAt | date: 'd, MMM H:mm'}}, {{detail.status}} by {{detail.postedBy}}" ng-repeat="detail in event.details">
+            {{detail.content}}
+        </accordion-group>
+        <accordion-group is-open="openNewPost">
+            <accordion-heading>
+                <i class="pull-right glyphicon glyphicon-plus"></i> New (click to post new info)
+            </accordion-heading>
+            <form class name="eventForm">
+                <fieldset class="col-md-12">
+                    <legend>Your post</legend>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <label class="control-label">Description</label>
+                                <textarea class="form-control" rows="5" name="info" placeholder="Type in here" ng-model="newPost.content" required/>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label">Status</label>
+                                <select class="form-control" name="status" ng-model="newPost.status" required>
+                                    <options value=""> -- Select a status -- </options>
+                                    <option value="opened"> Opened </option>
+                                    <option value="closed"> Closed </option>
+                                    <option value="pending"> Pending </option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="pull-right">
+                            <button class="btn btn-primary" ng-click="saveNewPost()" ng-disabled="eventForm.$invalid"> Save </button>
+                            &nbsp;
+                            <button class="btn btn-default" ng-click="cancelNewPost();"> Clear </button>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+            <div class="msg-placeholder" ng-if="loading">
+                <div class="loader" style="position: relative; left: 130px; top: 25px;" ng-if="loading">
+                    <div class="loader-inner line-spin-fade-loader"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+                </div>
+            </div>
+        </accordion-group>
+    </accordion>
+
 </div>
