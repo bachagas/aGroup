@@ -48,6 +48,7 @@ exports.createNewEventDetail = function (req, res) {
         parent.set('title', req.body.parent.title);
         parent.set('content', req.body.parent.content);
         parent.set('createdBy', req.body.parent.createdBy);
+        parent.set('status', req.body.status);
         if (req.body.status == 'opened') {
             parent.set('featured', true);
         } else {
