@@ -24,9 +24,12 @@ exports.getEventById = function (req, res) {
     query.ascending('createdAt');
     query.find({
         success: function (data) {
-            var event = JSON.parse(JSON.stringify(data[0].get('parent')));
-            event.statusDate = event.statusDate.iso;
-            event.details = data;
+            var event = {};
+            if (data && data.length > 0) {
+                event = JSON.parse(JSON.stringify(data[0].get('parent')));
+                event.statusDate = event.statusDate.iso;
+                event.details = data;
+            }
             res.send(event);
         },
         error: function (error) {
@@ -43,29 +46,33 @@ exports.createNewEventDetail = function (req, res) {
     //Creates /updates parent event:
     var Event = Parse.Object.extend('Event');
     var parent = new Event();
+    var newEvent = true;
     if (req.body.parent && req.body.parent.objectId) {
         parent.id = req.body.parent.objectId;
-        parent.set('title', req.body.parent.title);
-        parent.set('content', req.body.parent.content);
-        parent.set('createdBy', req.body.parent.createdBy);
-        parent.set('status', req.body.status);
-        if (req.body.status == 'opened') {
-            parent.set('featured', true);
-        } else {
-            parent.set('featured', false);
-        }
-        parent.set('statusDate', new Date());
-        event.set('parent', parent);
-    } else {
-        res.status(400);
-        return res.send({reason: 'Error: cannot create a event detail without a parent data. Please, check the data you have sent again. (internal error))', error: {data: req.body}});
+        newEvent = false;
     }
+    parent.set('title', req.body.parent.title);
+    parent.set('content', req.body.parent.content);
+    parent.set('createdBy', req.body.parent.createdBy);
+    parent.set('status', req.body.status);
+    if (req.body.status == 'opened' || !parent.id) { //new event
+        parent.set('featured', true);
+    } else {
+        parent.set('featured', false);
+    }
+    parent.set('statusDate', new Date());
+    event.set('parent', parent);
+    //} else {
+    //    res.status(400);
+    //    return res.send({reason: 'Error: cannot create a event detail without a parent data. Please, check the data you have sent again. (internal error))', error: {data: req.body}});
+    //}
 
     var nodemailer = require('./emails');
     function sendEmail() {
         //try to send email to the creator of the event:
         var event = req.body;
         var parent = event.parent;
+        var me = req.user.attributes;
         if (parent && parent.createdBy) {
             var query = new Parse.Query(Parse.User);
             query.equalTo('username', parent.createdBy);
@@ -74,12 +81,13 @@ exports.createNewEventDetail = function (req, res) {
                     var to = owner.get('email');
                     if (to && to.length > 0) {
                         nodemailer.sendEmail({
+                            from: me.firstName + ' ' + me.lastName + ' using aGroupware ? <agroupware@gmail.com>',
                             to: to,
                             subject: 'Event ' + event.status + ': ' + parent.title,
-                            text: 'Your event "' + parent.title + '" has changed:\n'
+                            text: 'Your event "' + parent.title + (newEvent ? '" has been created:\n' : '" has changed:\n')
                                 + 'status --> ' + event.status + '\n'
                                 + 'on --> ' + new Date() + '\n'
-                                + 'by --> ' + event.postedBy + '\n\n'
+                                + 'by --> ' + event.postedBy + ' (' + (me.email || 'email not informed') + ')\n\n'
                                 + 'Comment: \n' + event.content
                         }, function (error, response) {
                             if (error) {

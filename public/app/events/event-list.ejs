@@ -1,8 +1,9 @@
 <div class="container">
-    <div class="pull-right margin-bottom-med">
+    <div class="margin-bottom-med">
         <form class="form-inline">
-            <div class="form-group">
-                <input class="form-control" type="text" placeholdr="Filter" ng-model="searchText"/>
+            <a class="btn btn-default" href="/events/new">+ New event</a>
+            <div class="form-group pull-right">
+                <input class="form-control" type="text" placeholder="Filter" ng-model="searchText"/>
                 <select class="form-control margin-left-med" ng-model="sortOrder" ng-options="item.value as item.text for item in sortOptions" />
             </div>
         </form>

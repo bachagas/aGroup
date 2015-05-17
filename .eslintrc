@@ -31,6 +31,7 @@
     "no-wrap-func": 0,
     "no-unused-vars": [2, {"vars": "local", "args": "after-used"}],
     "no-shadow": 0,
-    "no-alert": 0
+    "no-alert": 1,
+    "no-console": 1
   }
 }

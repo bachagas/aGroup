@@ -56,6 +56,9 @@ header .jumbotron {
 .pending {
   color: #ff0;
 }
+.urgent {
+  color: #ff4500;
+}
 .new {
   font-weight: bold;
 }
