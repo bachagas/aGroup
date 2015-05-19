@@ -26,13 +26,16 @@ exports.logout = function (req, res) {
     res.end();
 };
 
-exports.requiresApiLogin = function (req, res, next) {
-    if (!req.isAuthenticated()) {
-        res.status(403);
-        res.end();
-    } else {
-        next();
-    }
+exports.requiresApiLogin = function () {
+    return function (req, res, next) {
+        if (!req.isAuthenticated()) {
+            res.status(401);
+            res.end();
+            //res.redirect('/login');
+        } else {
+            next();
+        }
+    };
 };
 
 exports.requiresRole = function (role) {

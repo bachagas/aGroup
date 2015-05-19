@@ -6,14 +6,14 @@ var auth = require('./auth'),
 module.exports = function (app) {
     //Api routes:
     app.get('/api/users', auth.requiresRole('admin'), users.getUsers);
-    app.post('/api/users', users.createUser);
-    app.put('/api/users', users.updateUser);
+    app.post('/api/users', users.createUser); //sing up doesn't require an authenticated user
+    app.put('/api/users', auth.requiresApiLogin(), users.updateUser);
 
-    app.get('/api/events', events.getEvents);
-    app.get('/api/events/:id', events.getEventById);
-    app.post('/api/events', events.createNewEventDetail);
+    app.get('/api/events', auth.requiresApiLogin(), events.getEvents);
+    app.get('/api/events/:id', auth.requiresApiLogin(), events.getEventById);
+    app.post('/api/events', auth.requiresApiLogin(), events.createNewEventDetail);
 
-    app.get('/api/entities', entities.getEntities);
+    app.get('/api/entities', auth.requiresApiLogin(), entities.getEntities);
 
     //Api routes:
     app.get('/partials/*', function (req, res) {
@@ -30,8 +30,7 @@ module.exports = function (app) {
 
     app.get('*', function(req, res) {
         res.render('index', {
-            bootstrappedUser: req.user,
-            unescape: require('lodash').unescape
+            bootstrappedUser: req.user
         });
     });
 };
