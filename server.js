@@ -24,7 +24,7 @@ require('./server/config/routes')(app);
 
 //Starts server:
 app.listen(config.port);
+console.log('Express server listening on %d, in %s mode...', config.port, config.env);
+console.log();
 console.log('Started using following configurations:');
 console.log(config);
-console.log();
-console.log('Express server listening on %d, in %s mode...', config.port, config.env);

@@ -8,21 +8,21 @@
     <base href="/">
     <title>Meta Groupware | <%= __('Welcome') %>!</title>
 
-    <% include ../includes/style %>
+    <% include ./includes/styles %>
 
 </head>
 
 <body ng-app="MetaGroupware">
 
-    <% include ../includes/currentUser %>
+    <% include ./includes/currentUser %>
 
     <ng-include src="'/partials/account/navbar'"> </ng-include>
 
     <ng-view> </ng-view>
 
-    <% include ../includes/footer %>
+    <% include ./includes/footer %>
 
-    <% include ../includes/scripts %>
+    <% include ./includes/scripts %>
 
 </body>
 </html>

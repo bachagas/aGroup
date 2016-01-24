@@ -62,7 +62,7 @@
                     <span class="glyphicon glyphicon-flag status-light" ng-class="detail.status" title="{{detail.status}}"> </span>
                     {{detail.createdAt | date: 'd, MMM H:mm'}}, {{detail.status}} by {{detail.postedBy}}
                 </accordion-heading>
-                {{detail.content}}
+                <span ng-bind-html='detail.content | linky: "_blank"'></span>
             </accordion-group>
             <accordion-group is-open="openNewPost">
                 <accordion-heading>

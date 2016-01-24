@@ -1,4 +1,4 @@
-angular.module('MetaGroupware', ['ngResource', 'ngRoute', 'pascalprecht.translate', 'ui.bootstrap', 'cgNotify']);
+angular.module('MetaGroupware', ['ngResource', 'ngRoute', 'ngSanitize', 'pascalprecht.translate', 'ui.bootstrap', 'cgNotify']);
 
 angular.module('MetaGroupware').config(function ($routeProvider, $locationProvider, $translateProvider) {
     $locationProvider.html5Mode(true);
@@ -44,7 +44,7 @@ angular.module('MetaGroupware').config(function ($routeProvider, $locationProvid
             resolve: routeRoleChecks.user
         })
         .when('/signup', {
-            templateUrl: '/partials/account/signup',
+            templateUrl: '/partials/account/sign-up',
             controller: 'mgSignupCtrl'
         })
         .when('/profile', {

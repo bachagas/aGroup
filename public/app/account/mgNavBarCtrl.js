@@ -4,7 +4,7 @@ angular.module('MetaGroupware').controller('mgNavBarCtrl', function ($scope, $mo
 
     $scope.logIn = function () {
         $modal.open({
-            templateUrl: '/partials/account/signIn',
+            templateUrl: '/partials/account/log-in',
             size: 'sm',
             controller: function ($scope, $modalInstance) {
                 $scope.errors = null;
