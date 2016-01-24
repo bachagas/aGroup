@@ -1,3 +1,4 @@
+<img alt="Metagroupware" src="http://agroup.herokuapp.com/imgs/logo.png" height="100">
 # aGroup
 ## A meta-groupware platform assisting people with technology
 
@@ -5,7 +6,7 @@ aGroup is a demo/research project I did to play around with Node.js and Angular.
 
 So it is a "complete" MEAN stack project (Backend + Frontend) I built from scratch (an empty dir :) to see how it is to put a complete web app live using this technology.
 
-You can chekout a live demo on Heroku: [http://agroup.herokuapp.com/](http://agroup.herokuapp.com/)
+You can chekout a live demo on Heroku <a href="http://agroup.herokuapp.com/" target="_blank">here</a>.
 
 _Note: If it is dead, please drop me a line, probably Heroku dynos are sleeping for too long and need a restart._
 
@@ -31,7 +32,7 @@ The app plays around with some web app important concepts:
 - Single page app in the Frontend (using Angular routes)
 - Controllers and forms (even with some fancy validations in the sign up form ;-)
 - Angular services, resources, directives, etc.
-- Storing data in a MongoDB ([Parse.com](http://parse.com/))
+- Storing data in a MongoDB <a href="http://parse.com/" target="_blank">(Parse.com)</a>
 
 ---
 
@@ -46,4 +47,4 @@ npm install
 node server.js
 ```
 
-And everything has worked if can go to [http://localhost:3030](http://localhost:3030) and the app is up and alive ;-)
+And everything has worked if you can go to [http://localhost:3030](http://localhost:3030) and the app is up and alive ;-)
