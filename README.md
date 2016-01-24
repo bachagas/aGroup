@@ -3,7 +3,7 @@
 
 aGroup is a demo/research project I did to play around with Node.js and Angular.
 
-So it is a "complete" MEAN stack project (Backend + Frontend) I built from scratch to see how it is to put a complete web app live using this technology.
+So it is a "complete" MEAN stack project (Backend + Frontend) I built from scratch (an empty dir :) to see how it is to put a complete web app live using this technology.
 
 You can chekout a live demo on Heroku: [http://agroup.herokuapp.com/](http://agroup.herokuapp.com/)
 
@@ -28,9 +28,9 @@ The app plays around with some web app important concepts:
 - Routing in the Backend (using Express)
 - EJS templates and partials
 - Basic authentication and authorization
-- Single page app in the Frontend (using Angular routing)
+- Single page app in the Frontend (using Angular routes)
+- Controllers and forms (even with some fancy validations in the sign up form ;-)
 - Angular services, resources, directives, etc.
-- Controllers and forms
 - Storing data in a MongoDB ([Parse.com](http://parse.com/))
 
 ---
@@ -46,4 +46,4 @@ npm install
 node server.js
 ```
 
-And everything has worked if can tap the app up and alive in [http://localhost:3030](http://localhost:3030) ;-)
+And everything has worked if can go to [http://localhost:3030](http://localhost:3030) and the app is up and alive ;-)

@@ -1,5 +1,6 @@
 {
   "Welcome": "Bem-vindo",
   "Hello world": "Olá, mundo",
-  "Hello Angular ;-)": "Olá, Angular ;-)"
+  "Hello Angular ;-)": "Olá, Angular ;-)",
+  "Passwords doesn't match!": "Os passwords não correspondem."
 }
